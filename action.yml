@@ -1,0 +1,9 @@
+name: 'PR Labels'
+description: 'Automatically label PRs based on the branch prefix'
+inputs:
+  token:
+    description: 'GitHub Token for the user to perform label additions. Use `secrets.GITHUB_TOKEN` for the actions bot'
+    required: true
+runs:
+  using: 'node12'
+  main: 'index.js'
