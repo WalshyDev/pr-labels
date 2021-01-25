@@ -25,6 +25,7 @@ async function run() {
 
     const branch = data.data.head.ref;
 
+    let labelApplied = null;
     for (let prefix of labels) {
       let tmp = prefix;
       if (!prefix.endsWith('/'))
@@ -35,8 +36,12 @@ async function run() {
         const label = process.env['INPUT_' + tmp.toUpperCase()];
         console.log(`Adding ${label} to #${prNumber}`);
         await addLabels(client, prNumber, [label]);
+        labelApplied = label;
+        break;
       }
     }
+
+    core.setOutput('applied', labelApplied);
   } catch (error) {
     console.error(error);
     core.setFailed(error.message);
