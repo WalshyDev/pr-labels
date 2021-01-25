@@ -5,7 +5,7 @@ inputs:
     description: 'GitHub Token for the user to perform label additions. Use `secrets.GITHUB_TOKEN` for the actions bot'
     required: true
 outputs:
-  result:
+  applied:
     description: The label applied to the Pull Request. If no label was applied this will be null.
 runs:
   using: 'node12'
